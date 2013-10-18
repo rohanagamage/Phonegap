@@ -1,13 +1,10 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>App Phone gap</title>
-<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
-<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
-<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
-  <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
- <script type="text/javascript" charset="utf-8">
+  <head>
+    <title>Notification Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
     // Wait for PhoneGap to load
     //
@@ -19,81 +16,33 @@
         // Empty
     }
 
-    // process the confirmation dialog result
-    function onConfirm(button) {
-        alert('You selected button ' + button);
-    }
-
-    // Show a custom confirmation dialog
+    // Show a custom alert
     //
-    function showConfirm() {
-        navigator.notification.confirm(
+    function showAlert() {
+        navigator.notification.alert(
             'You are the winner!',  // message
-            onConfirm,              // callback to invoke with index of button pressed
             'Game Over',            // title
-            'Restart,Exit'          // buttonLabels
+            'Done'                  // buttonName
         );
     }
 
+    // Beep three times
+    //
+    function playBeep() {
+        navigator.notification.beep(3);
+    }
+
+    // Vibrate for 2 seconds
+    //
+    function vibrate() {
+        navigator.notification.vibrate(2000);
+    }
+
     </script>
-</head> 
-<body> 
-
-  
- 
-
-<div data-role="page" id="page">
-	<div data-role="header">
-		<h1>Page One</h1>
-	</div>
-	<div data-role="content">	
-		<ul data-role="listview">
-			<li><a href="#page2">Page Two</a></li>
-            <li><a href="#page3">Page Three</a></li>
-			<li><a href="#page4">Page Four</a></li>
-   
-		</ul>		
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page2">
-	<div data-role="header">
-		<h1>Page Two</h1>
-	</div>
-	<div data-role="content">	
-	     <a href="#" onclick="showConfirm(); return false;">Show Confirm</a>	
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page3">
-	<div data-role="header">
-		<h1>Page Three</h1>
-	</div>
-	<div data-role="content">	
-		Content		
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page4">
-	<div data-role="header">
-		<h1>Page Four</h1>
-	</div>
-	<div data-role="content">	
-		Content		
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
-</div>
-
-</body>
+  </head>
+  <body>
+    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+    <p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
+    <p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
+  </body>
 </html>
